@@ -1,0 +1,100 @@
+body {
+	width: 830px;
+}
+
+#header-img {
+	width:830px;
+	height:120px;
+	background-image: url(../images/header.jpg);
+	text-align: right;
+	border-radius: 10px;
+}
+
+#header-img div {
+	padding-right: 95px;
+	padding-top: 35px;
+	font-size: 40px;
+	color: #FFFFFF;
+}
+
+h3 {
+	margin: 6px 0;
+}
+
+#breeds-ranking {
+	width: 350px;
+	/*margin: 0 auto;*/
+}
+
+.breed-ranking-points {
+	float: right;
+    font-weight: bold;
+    padding-right: 20px;
+    padding-top: 15px;
+}
+
+#answers-container {
+	border: 1px solid;
+    border-radius: 10px;
+    width: 550px;
+    background-color: #B9C7D2;
+}
+
+#possible-breeds {
+    left: 592px;
+    position: absolute;
+    top: 135px;
+    width: 245px;
+}
+
+#possible-breeds-list {
+	border: 1px solid;
+    border-radius: 10px;
+    overflow: hidden;
+}
+
+.possible-breed {
+	border-bottom: 1px solid #000000;
+	cursor: pointer;
+	position: relative;
+}
+
+.breed-name {
+	left: 75px;
+    position: absolute;
+    top: 16px;
+}
+
+.breed-attribute {
+	padding-right: 10px;
+	font-weight: bold;
+}
+
+#breed-container {
+	background-color: #B9C7D2;
+    border: 1px solid;
+    border-radius: 10px;
+    overflow: hidden;
+    width: 715px;
+}
+
+.breed-info {
+	float: left;
+}
+
+.breed-info-img {
+	float: left;
+	padding-right: 10px;
+}
+
+.breed-info-container {
+	padding-bottom: 10px;
+}
+
+.clearfix:after{
+	content:".";
+	display:block;
+	height:0;
+	clear:both;
+	visibility:hidden;
+}

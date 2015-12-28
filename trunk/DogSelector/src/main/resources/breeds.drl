@@ -1,0 +1,418 @@
+rule "rottweiler"
+when
+    exists ar.uba.fi.model.Answer(question.id == 'dogSize', selectedOptionDescription == 'grande')
+then
+    ar.uba.fi.services.RulesService.getInstance().setBreedId("rottweiler");
+end
+
+rule "beagle"
+when
+    exists ar.uba.fi.model.Answer(question.id == 'dogSize', selectedOptionDescription == 'chico')
+    exists ar.uba.fi.model.Answer(question.id == 'animals', selectedOptionDescription == 'baja')
+then
+    ar.uba.fi.services.RulesService.getInstance().setBreedId("beagle");
+end
+
+rule "golden"
+when
+    exists ar.uba.fi.model.Answer(question.id == 'dogSize', selectedOptionDescription == 'mediano')
+    exists ar.uba.fi.model.Answer(question.id == 'animals', selectedOptionDescription == 'alta')
+then
+    ar.uba.fi.services.RulesService.getInstance().setBreedId("golden-retriever");
+end
+
+rule "bulldog"
+when
+    exists ar.uba.fi.model.Answer(question.id == 'dogSize', selectedOptionDescription == 'mediano')
+    exists ar.uba.fi.model.Answer(question.id == 'animals', selectedOptionDescription == 'media')
+then
+    ar.uba.fi.services.RulesService.getInstance().setBreedId("bulldog");
+end
+
+rule "chihuahua"
+when
+    exists ar.uba.fi.model.Answer(question.id == 'dogSize', selectedOptionDescription == 'chico')
+    exists ar.uba.fi.model.Answer(question.id == 'animals', selectedOptionDescription == 'media')
+then
+    ar.uba.fi.services.RulesService.getInstance().setBreedId("chihuahua");
+end
+
+rule "cocker"
+when
+    exists ar.uba.fi.model.Answer(question.id == 'dogSize', selectedOptionDescription == 'pequeño')
+    exists ar.uba.fi.model.Answer(question.id == 'animals', selectedOptionDescription == 'alta')
+then
+    ar.uba.fi.services.RulesService.getInstance().setBreedId("cocker");
+end
+
+
+
+
+rule "not beagle"
+when
+    exists ar.uba.fi.model.Answer(question.id == 'dogSize', selectedOptionValue != '0')
+    or
+    exists ar.uba.fi.model.Answer(question.id == 'exercise', selectedOptionValue != '1')
+    or
+    exists ar.uba.fi.model.Answer(question.id == 'bark', selectedOptionValue != '2')
+    or
+    exists ar.uba.fi.model.Answer(question.id == 'animals', selectedOptionValue != '0')
+    or
+    exists ar.uba.fi.model.Answer(question.id == 'children', selectedOptionValue != '2')
+    or
+    exists ar.uba.fi.model.Answer(question.id == 'timeAlone', selectedOptionValue != '1')
+    or
+    exists ar.uba.fi.model.Answer(question.id == 'protection', selectedOptionValue != '1')
+    or
+    exists ar.uba.fi.model.Answer(question.id == 'garden', selectedOptionValue != '1')
+    or
+    exists ar.uba.fi.model.Answer(question.id == 'houseSize', selectedOptionValue != '1')
+then
+    ar.uba.fi.services.RulesService.getInstance().removePossibleBreed("beagle");
+end
+
+rule "not golden"
+when
+    exists ar.uba.fi.model.Answer(question.id == 'dogSize', selectedOptionValue != '1')
+    or
+    exists ar.uba.fi.model.Answer(question.id == 'animals', selectedOptionValue != '2')
+    or
+    exists ar.uba.fi.model.Answer(question.id == 'exercise', selectedOptionValue != '1')
+    or
+    exists ar.uba.fi.model.Answer(question.id == 'bark', selectedOptionValue != '2')
+    or
+    exists ar.uba.fi.model.Answer(question.id == 'children', selectedOptionValue != '2')
+    or
+    exists ar.uba.fi.model.Answer(question.id == 'timeAlone', selectedOptionValue != '1')
+    or
+    exists ar.uba.fi.model.Answer(question.id == 'protection', selectedOptionValue != '0')
+    or
+    exists ar.uba.fi.model.Answer(question.id == 'garden', selectedOptionValue != '2')
+    or
+    exists ar.uba.fi.model.Answer(question.id == 'houseSize', selectedOptionValue != '1')
+then
+    ar.uba.fi.services.RulesService.getInstance().removePossibleBreed("golden-retriever");
+end
+
+rule "not bulldog"
+when
+    exists ar.uba.fi.model.Answer(question.id == 'dogSize', selectedOptionValue != '1')
+    or
+    exists ar.uba.fi.model.Answer(question.id == 'animals', selectedOptionValue != '1')
+    or
+    exists ar.uba.fi.model.Answer(question.id == 'exercise', selectedOptionValue != '0')
+    or
+    exists ar.uba.fi.model.Answer(question.id == 'bark', selectedOptionValue != '1')
+    or
+    exists ar.uba.fi.model.Answer(question.id == 'children', selectedOptionValue != '1')
+    or
+    exists ar.uba.fi.model.Answer(question.id == 'timeAlone', selectedOptionValue != '1')
+    or
+    exists ar.uba.fi.model.Answer(question.id == 'protection', selectedOptionValue != '2')
+    or
+    exists ar.uba.fi.model.Answer(question.id == 'garden', selectedOptionValue != '1')
+    or
+    exists ar.uba.fi.model.Answer(question.id == 'houseSize', selectedOptionValue != '0')
+then
+    ar.uba.fi.services.RulesService.getInstance().removePossibleBreed("bulldog");
+end
+
+rule "not chihuahua"
+when
+    exists ar.uba.fi.model.Answer(question.id == 'dogSize', selectedOptionValue != '0')
+    or
+    exists ar.uba.fi.model.Answer(question.id == 'animals', selectedOptionValue != '0')
+    or
+    exists ar.uba.fi.model.Answer(question.id == 'exercise', selectedOptionValue != '2')
+    or
+    exists ar.uba.fi.model.Answer(question.id == 'bark', selectedOptionValue != '1')
+    or
+    exists ar.uba.fi.model.Answer(question.id == 'children', selectedOptionValue != '0')
+    or
+    exists ar.uba.fi.model.Answer(question.id == 'timeAlone', selectedOptionValue != '1')
+    or
+    exists ar.uba.fi.model.Answer(question.id == 'protection', selectedOptionValue != '1')
+    or
+    exists ar.uba.fi.model.Answer(question.id == 'garden', selectedOptionValue != '0')
+    or
+    exists ar.uba.fi.model.Answer(question.id == 'houseSize', selectedOptionValue != '2')
+then
+    ar.uba.fi.services.RulesService.getInstance().removePossibleBreed("chihuahua");
+end
+
+rule "not cocker"
+when
+    exists ar.uba.fi.model.Answer(question.id == 'dogSize', selectedOptionValue != '0')
+    or
+    exists ar.uba.fi.model.Answer(question.id == 'animals', selectedOptionValue != '0')
+    or
+    exists ar.uba.fi.model.Answer(question.id == 'exercise', selectedOptionValue != '1')
+    or
+    exists ar.uba.fi.model.Answer(question.id == 'bark', selectedOptionValue != '2')
+    or
+    exists ar.uba.fi.model.Answer(question.id == 'children', selectedOptionValue != '2')
+    or
+    exists ar.uba.fi.model.Answer(question.id == 'timeAlone', selectedOptionValue != '0')
+    or
+    exists ar.uba.fi.model.Answer(question.id == 'protection', selectedOptionValue != '0')
+    or
+    exists ar.uba.fi.model.Answer(question.id == 'garden', selectedOptionValue != '1')
+    or
+    exists ar.uba.fi.model.Answer(question.id == 'houseSize', selectedOptionValue != '2')
+then
+    ar.uba.fi.services.RulesService.getInstance().removePossibleBreed("cocker");
+end
+
+rule "not rottweiler"
+when
+    exists ar.uba.fi.model.Answer(question.id == 'dogSize', selectedOptionValue != '2')
+    or
+    exists ar.uba.fi.model.Answer(question.id == 'animals', selectedOptionValue != '2')
+    or
+    exists ar.uba.fi.model.Answer(question.id == 'exercise', selectedOptionValue != '1')
+    or
+    exists ar.uba.fi.model.Answer(question.id == 'bark', selectedOptionValue != '1')
+    or
+    exists ar.uba.fi.model.Answer(question.id == 'children', selectedOptionValue != '1')
+    or
+    exists ar.uba.fi.model.Answer(question.id == 'timeAlone', selectedOptionValue != '1')
+    or
+    exists ar.uba.fi.model.Answer(question.id == 'protection', selectedOptionValue != '2')
+    or
+    exists ar.uba.fi.model.Answer(question.id == 'garden', selectedOptionValue != '2')
+    or
+    exists ar.uba.fi.model.Answer(question.id == 'houseSize', selectedOptionValue != '0')
+then
+    ar.uba.fi.services.RulesService.getInstance().removePossibleBreed("rottweiler");
+end
+
+
+
+
+
+
+rule "dogSize = 0"
+when
+    exists ar.uba.fi.model.Answer(question.id == 'dogSize', selectedOptionValue == '0')
+then
+    ar.uba.fi.services.RulesService.getInstance().addPoints("beagle", 1);
+    ar.uba.fi.services.RulesService.getInstance().addPoints("chihuahua", 1);
+    ar.uba.fi.services.RulesService.getInstance().addPoints("cocker", 1);
+end
+
+rule "dogSize = 1"
+when
+    exists ar.uba.fi.model.Answer(question.id == 'dogSize', selectedOptionValue == '1')
+then
+    ar.uba.fi.services.RulesService.getInstance().addPoints("golden-retriever", 1);
+    ar.uba.fi.services.RulesService.getInstance().addPoints("bulldog", 1);
+end
+
+rule "dogSize = 2"
+when
+    exists ar.uba.fi.model.Answer(question.id == 'dogSize', selectedOptionValue == '2')
+then
+    ar.uba.fi.services.RulesService.getInstance().addPoints("rottweiler", 1);
+end
+
+
+
+rule "animals = 0"
+when
+    exists ar.uba.fi.model.Answer(question.id == 'animals', selectedOptionValue == '0')
+then
+    ar.uba.fi.services.RulesService.getInstance().addPoints("beagle", 1);
+end
+
+rule "animals = 1"
+when
+    exists ar.uba.fi.model.Answer(question.id == 'animals', selectedOptionValue == '1')
+then
+    ar.uba.fi.services.RulesService.getInstance().addPoints("chihuahua", 1);
+    ar.uba.fi.services.RulesService.getInstance().addPoints("bulldog", 1);
+    ar.uba.fi.services.RulesService.getInstance().addPoints("rottweiler", 1);
+end
+
+rule "animals = 2"
+when
+    exists ar.uba.fi.model.Answer(question.id == 'animals', selectedOptionValue == '2')
+then
+    ar.uba.fi.services.RulesService.getInstance().addPoints("cocker", 1);
+    ar.uba.fi.services.RulesService.getInstance().addPoints("golden-retriever", 1);
+end
+
+
+
+rule "exercise = 0"
+when
+    exists ar.uba.fi.model.Answer(question.id == 'exercise', selectedOptionValue == '0')
+then
+    ar.uba.fi.services.RulesService.getInstance().addPoints("chihuahua", 1);
+    ar.uba.fi.services.RulesService.getInstance().addPoints("cocker", 1);
+    ar.uba.fi.services.RulesService.getInstance().addPoints("rottweiler", 1);
+end
+
+rule "exercise = 1"
+when
+    exists ar.uba.fi.model.Answer(question.id == 'exercise', selectedOptionValue == '1')
+then
+    ar.uba.fi.services.RulesService.getInstance().addPoints("beagle", 1);
+    ar.uba.fi.services.RulesService.getInstance().addPoints("bulldog", 1);
+end
+
+rule "exercise = 2"
+when
+    exists ar.uba.fi.model.Answer(question.id == 'exercise', selectedOptionValue == '2')
+then
+    ar.uba.fi.services.RulesService.getInstance().addPoints("golden-retriever", 1);
+end
+
+
+
+rule "bark = 0"
+when
+    exists ar.uba.fi.model.Answer(question.id == 'bark', selectedOptionValue == '0')
+then
+    ar.uba.fi.services.RulesService.getInstance().addPoints("bulldog", 1);
+end
+
+rule "bark = 1"
+when
+    exists ar.uba.fi.model.Answer(question.id == 'bark', selectedOptionValue == '1')
+then
+    ar.uba.fi.services.RulesService.getInstance().addPoints("cocker", 1);
+    ar.uba.fi.services.RulesService.getInstance().addPoints("rottweiler", 1);
+    ar.uba.fi.services.RulesService.getInstance().addPoints("golden-retriever", 1);
+end
+
+rule "bark = 2"
+when
+    exists ar.uba.fi.model.Answer(question.id == 'bark', selectedOptionValue == '2')
+then
+    ar.uba.fi.services.RulesService.getInstance().addPoints("chihuahua", 1);
+    ar.uba.fi.services.RulesService.getInstance().addPoints("beagle", 1);
+end
+
+
+
+rule "children = 0"
+when
+    exists ar.uba.fi.model.Answer(question.id == 'children', selectedOptionValue == '0')
+then
+    ar.uba.fi.services.RulesService.getInstance().addPoints("chihuahua", 1);
+end
+
+rule "children = 1"
+when
+    exists ar.uba.fi.model.Answer(question.id == 'children', selectedOptionValue == '1')
+then
+    ar.uba.fi.services.RulesService.getInstance().addPoints("bulldog", 1);
+    ar.uba.fi.services.RulesService.getInstance().addPoints("rottweiler", 1);
+end
+
+rule "children = 2"
+when
+    exists ar.uba.fi.model.Answer(question.id == 'children', selectedOptionValue == '2')
+then
+    ar.uba.fi.services.RulesService.getInstance().addPoints("cocker", 1);
+    ar.uba.fi.services.RulesService.getInstance().addPoints("golden-retriever", 1);
+    ar.uba.fi.services.RulesService.getInstance().addPoints("beagle", 1);
+end
+
+
+
+rule "timeAlone = 0"
+when
+    exists ar.uba.fi.model.Answer(question.id == 'timeAlone', selectedOptionValue == '0')
+then
+    ar.uba.fi.services.RulesService.getInstance().addPoints("cocker", 1);
+end
+
+rule "timeAlone = 1"
+when
+    exists ar.uba.fi.model.Answer(question.id == 'timeAlone', selectedOptionValue == '1')
+then
+    ar.uba.fi.services.RulesService.getInstance().addPoints("chihuahua", 1);
+    ar.uba.fi.services.RulesService.getInstance().addPoints("bulldog", 1);
+    ar.uba.fi.services.RulesService.getInstance().addPoints("rottweiler", 1);
+    ar.uba.fi.services.RulesService.getInstance().addPoints("golden-retriever", 1);
+    ar.uba.fi.services.RulesService.getInstance().addPoints("beagle", 1);
+end
+
+
+
+rule "protection = 0"
+when
+    exists ar.uba.fi.model.Answer(question.id == 'protection', selectedOptionValue == '0')
+then
+    ar.uba.fi.services.RulesService.getInstance().addPoints("golden-retriever", 1);
+    ar.uba.fi.services.RulesService.getInstance().addPoints("cocker", 1);
+end
+
+rule "protection = 1"
+when
+    exists ar.uba.fi.model.Answer(question.id == 'protection', selectedOptionValue == '1')
+then
+    ar.uba.fi.services.RulesService.getInstance().addPoints("chihuahua", 1);
+    ar.uba.fi.services.RulesService.getInstance().addPoints("beagle", 1);
+end
+
+rule "protection = 2"
+when
+    exists ar.uba.fi.model.Answer(question.id == 'protection', selectedOptionValue == '2')
+then
+    ar.uba.fi.services.RulesService.getInstance().addPoints("bulldog", 1);
+    ar.uba.fi.services.RulesService.getInstance().addPoints("rottweiler", 1);
+end
+
+
+
+rule "garden = 0"
+when
+    exists ar.uba.fi.model.Answer(question.id == 'garden', selectedOptionValue == '0')
+then
+    ar.uba.fi.services.RulesService.getInstance().addPoints("chihuahua", 1);
+end
+
+rule "garden = 1"
+when
+    exists ar.uba.fi.model.Answer(question.id == 'garden', selectedOptionValue == '1')
+then
+    ar.uba.fi.services.RulesService.getInstance().addPoints("cocker", 1);
+    ar.uba.fi.services.RulesService.getInstance().addPoints("beagle", 1);
+    ar.uba.fi.services.RulesService.getInstance().addPoints("bulldog", 1);
+end
+
+rule "garden = 2"
+when
+    exists ar.uba.fi.model.Answer(question.id == 'garden', selectedOptionValue == '2')
+then
+    ar.uba.fi.services.RulesService.getInstance().addPoints("golden-retriever", 1);
+    ar.uba.fi.services.RulesService.getInstance().addPoints("rottweiler", 1);
+end
+
+
+
+rule "houseSize = 0"
+when
+    exists ar.uba.fi.model.Answer(question.id == 'houseSize', selectedOptionValue == '0')
+then
+    ar.uba.fi.services.RulesService.getInstance().addPoints("cocker", 1);
+    ar.uba.fi.services.RulesService.getInstance().addPoints("chihuahua", 1);
+end
+
+rule "houseSize = 1"
+when
+    exists ar.uba.fi.model.Answer(question.id == 'houseSize', selectedOptionValue == '1')
+then
+    ar.uba.fi.services.RulesService.getInstance().addPoints("beagle", 1);
+    ar.uba.fi.services.RulesService.getInstance().addPoints("golden-retriever", 1);
+end
+
+rule "houseSize = 2"
+when
+    exists ar.uba.fi.model.Answer(question.id == 'houseSize', selectedOptionValue == '2')
+then
+    ar.uba.fi.services.RulesService.getInstance().addPoints("bulldog", 1);
+    ar.uba.fi.services.RulesService.getInstance().addPoints("rottweiler", 1);
+end
